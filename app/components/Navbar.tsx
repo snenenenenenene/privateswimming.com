@@ -1,6 +1,6 @@
 export default function Navbar() {
   return (
-    <nav className="w-full text-xl h-32 px-10">
+    <nav className="w-full text-xl h-32 px-10 md:px-24">
       <div className="w-full h-full flex border-b-2 border-light-secondary">
         <section className="h-full font-bold text-4xl border-light-secondary flex justify-center items-center w-1/3">
           PZ
@@ -11,7 +11,7 @@ export default function Navbar() {
           <p>Trainer</p>
           <p>Pricing</p>
         </section>
-        <section className="h-full font-bold text-4xl border-light-secondary flex justify-center items-center w-1/3">
+        <section className="h-full pl-8 font-bold text-4xl border-light-secondary flex justify-center items-center w-1/3">
           <button className="w-32 h-14 text-lg rounded-full bg-light-secondary hover:opacity-90 text-light-primary">
             Join Now
           </button>

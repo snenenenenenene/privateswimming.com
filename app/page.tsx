@@ -1,7 +1,11 @@
+import Class from "./components/Class";
+import ProgrammeCard from "./components/ProgrammeCard";
+import { programmes } from "./data/programmes";
+
 export default function Home() {
   return (
     <main className=" w-full flex flex-col h-full">
-      <section className="flex flex-col px-10 my-20">
+      <section className="flex flex-col px-10 md:px-24 my-20">
         <picture className="overflow-hidden flex rounded-xl">
           <video
             autoPlay
@@ -12,7 +16,7 @@ export default function Home() {
         <section className="flex mt-10">
           <span className="w-[60%]">
             <h1 className="text-4xl md:text-6xl font-bold  ">
-              We Don't Just Practice, But Calm The Soul
+              We Don&apos;t Just Practice, But Calm The Soul
             </h1>
           </span>
           <span className="flex flex-col pl-2 w-[40%]">
@@ -32,56 +36,42 @@ export default function Home() {
         </section>
       </section>
       <div className="w-full h-20 bg-light-secondary"></div>
-      <section className="flex w-full px-10 my-20">
-        <picture className="w-2/3">
+      <section className="flex w-full h-full px-10 md:px-24 my-20">
+        <picture className="w-1/2 rounded-3xl object-cover flex h-full min-h-[30rem] overflow-hidden">
           <video
-            className="w-full h-full rounded-xl"
+            className="w-full h-full rounded-3xl min-h-[30rem] object-cover"
             src="assets/training-1.mp4"
           />
         </picture>
-        <section className="flex w-1/3 mt-10">
-          <span className="flex flex-col">
-            <p className="text-base">
-              I believe that personal training should be practiced with great
-              determination.
+        <section className="flex w-1/2 px-10">
+          <span className="flex my-auto flex-col">
+            <h2 className="text-5xl font-bold">
+              The Benefit Of Using a Personal Trainer
+            </h2>
+            <p className="text-base mt-2">
+              A private swimming instructor is like a personal trainer in the
+              water who provides intensive guidance, motivation, and expertise
+              in developing the right exercises.
             </p>
           </span>
         </section>
       </section>
-      <div className="w-full h-96 bg-light-secondary"></div>
-      <section className="w-full py-20 gap-x-40 flex h-full px-10 justify-between">
-        <article className="rounded-xl flex flex-col p-4 h-[30rem] w-full shadow-2xl drop-shadow-2xl">
-          <picture className="w-full rounded-2xl overflow-hidden h-1/3">
-            <img
-              alt="plan-1"
-              src="assets/plan-1.jpg"
-              className="w-full h-full object-cover"
-            />
-          </picture>
-          <h2>70 eur</h2>
-        </article>{" "}
-        <article className="rounded-xl flex flex-col p-4 h-[30rem] w-full shadow-2xl">
-          <picture className="w-full rounded-2xl overflow-hidden h-1/3">
-            <img
-              alt="plan-1"
-              src="assets/plan-1.jpg"
-              className="w-full h-full object-cover"
-            />
-          </picture>
-          <h2 className="uppercase text-3xl font-bold mt-3">70 eur</h2>
-        </article>{" "}
-        <article className="rounded-xl flex flex-col p-4 h-[30rem] w-full shadow-2xl drop-shadow-2xl">
-          <picture className="w-full rounded-2xl overflow-hidden h-1/3">
-            <img
-              alt="plan-1"
-              src="assets/plan-1.jpg"
-              className="w-full h-full object-cover"
-            />
-          </picture>
-          <h2>70 eur</h2>
-        </article>
+      <div className="w-full flex py-20 px-10 md:px-24 justify-between h-full bg-light-secondary">
+        <Class />
+        <Class />
+        <Class />
+      </div>
+      <section className="w-full md:px-24 py-20 gap-x-10 md:gap-x-40 flex h-full px-10 justify-between">
+        {programmes.map((program) => (
+          <ProgrammeCard
+            image={program.image}
+            title={program.title}
+            key={program.id}
+            price={program.price}
+          />
+        ))}
       </section>
-      <section className="w-full py-20 flex h-full px-10">
+      <section className="w-full py-20 md:px-24 flex h-full px-10">
         <div className="w-full text-center bg-light-accent px-20 py-10 rounded-xl">
           <h2 className="text-5xl font-bold">Join the Community</h2>
           <p className="text-xl py-6">
@@ -99,7 +89,7 @@ export default function Home() {
           </span>
         </div>
       </section>
-      <footer className="w-full py-20 px-10 flex h-72 text-light-primary bg-light-secondary">
+      <footer className="w-full py-20 md:px-24 px-10 flex h-72 text-light-primary bg-light-secondary">
         <span className="ml-auto h-full text-lg font-bold uppercase gap-x-4 flex">
           <p>Programs</p>
           <p>Training</p>
