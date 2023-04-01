@@ -6,9 +6,5 @@
 
 html {
   font-family: "Jost", sans-serif;
-}
-
-::selection,
-::-moz-selection {
-  background-color: rgb(234 179 8);
+  scroll-behavior: smooth;
 }
