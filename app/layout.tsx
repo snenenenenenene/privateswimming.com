@@ -61,7 +61,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="dark:bg-light-secondary dark:selection:text-light-secondary scroll-smooth selection:bg-light-accent transition-colors duration-300 dark:text-light-primary bg-light-primary flex-col text-light-secondary w-full h-full flex">
+      <body className="dark:bg-light-secondary w-screen dark:selection:text-light-secondary scroll-smooth selection:bg-light-accent transition-colors duration-300 dark:text-light-primary bg-light-primary flex-col text-light-secondary flex">
         <Providers>
           <Navbar />
           {children}
