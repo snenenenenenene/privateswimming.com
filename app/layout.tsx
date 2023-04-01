@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import Navbar from "./components/Navbar";
 import { Providers } from "./components/Providers";
 import "./globals.css";
