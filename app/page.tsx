@@ -1,11 +1,15 @@
 "use client";
+import { useTheme } from "next-themes";
+import Link from "next/link";
 import { useState } from "react";
-import { FaAsterisk } from "react-icons/fa";
+import { FaAsterisk, FaCode, FaFacebook, FaMoon, FaSun } from "react-icons/fa";
 import Class from "./components/Class";
 import ProgrammeCard from "./components/ProgrammeCard";
+import { classes } from "./data/classes";
 import { programmes } from "./data/programmes";
 
 export default function Home() {
+  const { theme, setTheme } = useTheme();
   const [showCopied, setShowCopied] = useState(false);
   return (
     <main className=" w-full flex flex-col h-full">
@@ -30,17 +34,17 @@ export default function Home() {
               determination.
             </p>
             <section className="flex mt-5 gap-x-4 justify-end">
-              <button className="rounded-full hover:bg-light-secondary hover:text-light-primary font-bold w-40 h-12 border-2 border-light-secondary">
+              <button className="rounded-full hover:bg-light-secondary dark:bg-black hover:text-light-primary font-bold w-40 h-12 border-2 border-light-secondary">
                 How it Works
               </button>
-              <button className="rounded-full hover:opacity-75 font-bold bg-light-accent w-40 h-12 border-2 border-light-accent">
+              <button className="rounded-full hover:opacity-75 font-bold dark:text-light-secondary bg-light-accent w-40 h-12 border-2 border-light-accent">
                 Trial Day
               </button>
             </section>
           </span>
         </section>
       </section>
-      <div className="w-full whitespace-nowrap h-20 flex justify-between items-center px-10 text-2xl 2xl:text-4xl uppercase font-semibold italic text-light-primary bg-light-secondary">
+      <div className="w-full whitespace-nowrap h-20 flex justify-between items-center px-10 text-xl lg:text-2xl 2xl:text-4xl uppercase font-semibold italic text-light-primary dark:bg-black bg-light-secondary">
         <p>Professional Trainer</p>
         <FaAsterisk className="text-lg text-light-accent" />
         <p>Beginner Friendly</p>
@@ -51,7 +55,7 @@ export default function Home() {
         <picture className="w-full sm:w-1/2 rounded-3xl object-cover flex h-full min-h-[30rem] overflow-hidden">
           <video
             className="w-full h-full rounded-3xl min-h-[30rem] object-cover"
-            src="assets/training-1.mp4"
+            src="assets/personal-trainer.mp4"
             autoPlay
             loop
           />
@@ -69,12 +73,15 @@ export default function Home() {
           </span>
         </section>
       </section>
-      <div className="w-full flex sm:flex-row flex-col items-center sm:items-start py-20 xl:px-36 2xl:px-40 px-10 md:px-24 justify-center sm:justify-between h-full bg-light-secondary">
-        <Class />
-        <Class />
-        <Class />
+      <div className="w-full flex sm:flex-row flex-col items-center sm:items-start py-20 xl:px-36 2xl:px-40 px-10 md:px-24 justify-center sm:justify-between h-full dark:bg-black bg-light-secondary">
+        {classes?.map((item) => (
+          <Class key={item} image={item} />
+        ))}
       </div>
-      <section className="w-full md:px-24 py-20 gap-x-10  xl:px-36 2xl:px-40 md:gap-x-40 flex sm:flex-row sm:gap-y-0 gap-y-8 flex-col h-full px-10 justify-between">
+      <section
+        id="pricing"
+        className="w-full md:px-24 py-20 gap-x-10 xl:px-36 2xl:px-40  lg:gap-x-40 flex sm:flex-row sm:gap-y-0 gap-y-8 flex-col h-full px-10 justify-between"
+      >
         {programmes.map((program) => (
           <ProgrammeCard
             perks={program.perks}
@@ -85,8 +92,11 @@ export default function Home() {
           />
         ))}
       </section>
-      <section className="w-full py-20 md:px-24 xl:px-36 2xl:px-40 flex h-full px-10">
-        <div className="w-full text-center bg-light-accent px-20 py-20 rounded-xl">
+      <section
+        id="contact"
+        className="w-full py-20 md:px-24 xl:px-36 2xl:px-40 flex h-full px-10"
+      >
+        <div className="w-full text-center bg-light-accent px-20 dark:text-light-secondary py-20 rounded-xl">
           <h2 className="text-5xl font-bold">Join the Community</h2>
           <p className="text-xl py-6">
             I believe that personal training should be practiced with great
@@ -96,7 +106,7 @@ export default function Home() {
             <input
               type="email"
               placeholder="Enter your Mail!"
-              className="rounded-full text-xl border-2 px-10 border-light-primary focus:border-light-secondary outline-none w-full h-full"
+              className="rounded-full text-xl border-2 bg-light-primary text-light-secondary px-10 border-light-primary focus:border-light-secondary outline-none w-full h-full"
             />
             <button className="w-32 h-5/6 absolute hover:opacity-75 -translate-y-1/2 top-1/2 right-1 bg-light-secondary rounded-full text-light-primary">
               Join Now
@@ -104,7 +114,7 @@ export default function Home() {
           </span>
         </div>
       </section>
-      <footer className="w-full py-20 md:px-24 xl:px-36 2xl:px-40 px-10 flex h-72 text-light-primary bg-light-secondary">
+      <footer className="w-full py-20 md:px-24 xl:px-36 2xl:px-40 px-10 flex h-72 text-light-primary dark:bg-black bg-light-secondary">
         <section>
           <span>
             <p className="font-bold uppercase">Location</p>
@@ -130,14 +140,49 @@ export default function Home() {
             <p>+32-477-45-10-00</p>
           </span>
         </section>
-        <span className="ml-auto h-full text-lg font-bold uppercase gap-x-4 flex">
-          <p>Programs</p>
-          <p>Training</p>
-          <p>Pricing</p>
-        </span>
+        <section className="ml-auto h-full flex flex-col">
+          <span className="flex w-full gap-x-4 uppercase justify-end font-bold text-lg">
+            <p className="hover:text-light-accent hover:underline cursor-pointer">
+              Programs
+            </p>
+            <p className="hover:text-light-accent hover:underline cursor-pointer">
+              Training
+            </p>
+            <p className="hover:text-light-accent hover:underline cursor-pointer">
+              Pricing
+            </p>
+          </span>
+          <span className="w-full mt-auto items-center h-full flex gap-x-4 justify-end">
+            <Link
+              href={"https://facebook.com/IvanFaesPrivateSwimAdvice"}
+              className="text-3xl hover:opacity-75"
+            >
+              <FaFacebook />
+            </Link>
+            <Link
+              className="text-3xl hover:opacity-75"
+              href={"https://www.sennebels.xyz"}
+            >
+              <FaCode />
+            </Link>
+            <button
+              onClick={() => {
+                console.log(theme);
+                theme === "dark" ? setTheme("light") : setTheme("dark");
+              }}
+            >
+              {theme === "dark" ? <FaSun /> : <FaMoon />}
+            </button>
+          </span>
+          <span>
+            <p className="text-sm mt-4">
+              © 2023 Ivan Faes. All rights reserved. Created by Senne Bels
+            </p>
+          </span>
+        </section>
       </footer>
       {showCopied && (
-        <div className="fixed top-0 z-50 left-0 flex justify-center items-center text-4xl uppercase font-bold transform w-full bg-light-accent border-b-2 border-light-secondary text-light-secondary px-10 py-5">
+        <div className="fixed top-0 z-50 left-0 flex justify-center items-center text-4xl uppercase font-bold transform w-full bg-light-accent border-b-2 border-light-secondary dark:border-light-primary text-light-secondary px-10 py-5">
           <p className="text-lg">Email copied to clipboard</p>
         </div>
       )}
