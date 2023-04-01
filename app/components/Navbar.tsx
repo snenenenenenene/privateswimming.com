@@ -1,11 +1,11 @@
 export default function Navbar() {
   return (
-    <nav className="w-full text-xl h-32 px-10 md:px-24">
+    <nav className="w-full text-xl h-32 px-10 xl:px-36 2xl:px-40 md:px-24">
       <div className="w-full h-full flex border-b-2 border-light-secondary">
         <section className="h-full font-bold text-4xl border-light-secondary flex justify-center items-center w-1/3">
-          PZ
+          Ivan Faes
         </section>
-        <section className="w-full flex gap-x-10 justify-center items-center">
+        <section className="w-full font-bold flex gap-x-10 justify-center items-center">
           <p>Home</p>
           <p>Programs</p>
           <p>Trainer</p>
