@@ -13,7 +13,7 @@ export default function ProgrammeCard({
   perks: string[];
 }) {
   return (
-    <article className="rounded-3xl bg-white flex hover:scale-110 transition-all duration-500 flex-col p-4 h-[30rem] w-full shadow">
+    <article className="rounded-3xl bg-white border-2 border-white dark:bg-light-secondary dark:border-light-primary flex hover:scale-110 transition-all duration-500 flex-col p-4 h-[30rem] w-full shadow">
       <picture className="w-full relative bg-light-secondary rounded-2xl overflow-hidden h-1/3">
         <img
           alt={title}
@@ -31,7 +31,7 @@ export default function ProgrammeCard({
       <section>
         {perks?.map((perk) => (
           <span key={perk} className="flex text-xl mt-4">
-            <FaCheckCircle className="fill-light-secondary w-5 h-5" />
+            <FaCheckCircle className="fill-light-secondary dark:fill-light-accent w-5 h-5" />
             <p className="text-base ml-2">{perk}</p>
           </span>
         ))}
